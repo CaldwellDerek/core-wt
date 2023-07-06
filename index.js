@@ -10,6 +10,8 @@ const app = express();
 app.use(require('express-session')({ secret: 'password', resave: true, saveUninitialized: true }));
 const PORT = process.env.PORT || 3000;
 
+const { User } = require("./models");
+
 const sess = {
     secret: process.env.SESSION_SECRET,
     cookie: {
