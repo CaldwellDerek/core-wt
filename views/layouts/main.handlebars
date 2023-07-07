@@ -10,16 +10,15 @@
     <link rel="stylesheet" href="/css/index.css">
     <title>Core</title>
 </head>
-<body style="background-color: darkgrey" class="vh-100">
-    <div class="container h-100">
-        <div style="min-height: 10%" class="row">
+<body style="background-color: darkgrey; position: relative">
+        <div style="min-height: 5rem;" class="row">
             <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand ms-3" href="#">Navbar</a>
+                    <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="collapse navbar-collapse justify-content-end me-3" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item sign-up-li">
                             <a class="nav-link" aria-current="page" href="/signup">Sign Up</a>
@@ -29,18 +28,17 @@
                 </div>
             </nav>
         </div>
-        <div style="height: 80%" class="row d-flex align-items-center">
+        <div style="min-height: 80vh;" class="row d-flex align-items-center">
             <main>
                 {{{body}}}
             </main>
         </div>
-        <div style="height: 10%" class="row">
+        <div style="min-height: 5rem;" class="row position-fixed bottom-0 end-0 start-0">
             <div class="container-fluid bg-dark d-flex justify-content-center align-items-center">
                 <a href="https://github.com/CaldwellDerek" target="_blank"><img style="height: 2.5rem" class="footer-img" src="/assets/github.png" alt="github logo"></img></a>
                 <a href="https://www.linkedin.com/in/djcaldwell95/" target="_blank"><img style="height: 2.625rem" class="footer-img" src="/assets/linkedin.png" alt="linkedin logo"></img></a>
             </div>
         </div>
-    </div>
     {{!-- Bootstrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

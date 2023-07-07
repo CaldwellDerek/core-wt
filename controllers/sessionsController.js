@@ -13,14 +13,4 @@ router.get("/", async (req, res) => {
     }
 })
 
-router.post("/create", async (req, res) => {
-    try {
-        req.session.username = req.body.username;
-        req.session.test = req.body.test;
-        return res.status(200);
-    } catch (error) {
-        return res.status(500).json({ msg: "An error has occurred!" });
-    }
-})
-
 module.exports = router;
