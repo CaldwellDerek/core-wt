@@ -22,7 +22,7 @@ router.get("/squat", (req, res) => {
     return res.render("squat")
 })
 
-router.get("/bench", (req, res) => {
+router.get("/deadlift", (req, res) => {
     return res.render("deadlift")
 })
 
