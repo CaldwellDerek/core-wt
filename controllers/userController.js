@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../models");
+const bcrypt = require("bcrypt");
 
+// Returns all users
 router.get("/", async (req, res)=> {
     try {
         const allUsers = await User.findAll();
@@ -16,6 +18,29 @@ router.get("/", async (req, res)=> {
     }
 })
 
+// Logs user in
+router.post("/login", async (req, res) => {
+    try {
+        const findUser = await User.findOne({
+            where: {
+                username: req.body.username
+            }
+        });
+
+        if (findUser && bcrypt.compareSync(req.body.password, findUser.password)){
+            req.session.userID = findUser.id;
+            res.session.username = findUser.username;
+            res.status(200).json(findUser);
+        } else {
+            res.status(401).json({msg: "Incorrect email or password!"});
+        }
+    } catch (error){
+        console.log(error);
+        res.status(500).json({ msg: "An error has occurred!" });
+    }
+})
+
+// Creates new user
 router.post("/create", async (req, res) => {
     try {
         const newUser = await User.create({
