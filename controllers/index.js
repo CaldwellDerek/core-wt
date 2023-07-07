@@ -7,6 +7,9 @@ router.use("/", frontEndRoutes);
 const userRoutes = require("./userController");
 router.use("/api/users", userRoutes);
 
+const benchRoutes = require("./benchMaxController");
+router.use("/api/bench", benchRoutes);
+
 const sessionRoutes = require("./sessionsController");
 router.use("/api/sessions", sessionRoutes);
 
