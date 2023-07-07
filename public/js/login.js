@@ -18,7 +18,7 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
     });
 
     if (logUser.ok){
-        const home = await fetch("/home");
+        window.location.href = "/home";
     } else {
         window.alert("Oops!")
     }

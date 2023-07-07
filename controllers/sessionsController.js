@@ -4,12 +4,22 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     try {
         if (req.session){
-            res.status(200).json(req.session)
+            return res.status(200).json(req.session)
         } else {
-            res.status(404).json({ msg: "No session data exists." });
+            return res.status(404).json({ msg: "No session data exists." });
         }
     } catch (error) {
-        res.status(500).json({ msg: "An error has occurred!" });
+        return res.status(500).json({ msg: "An error has occurred!" });
+    }
+})
+
+router.post("/create", async (req, res) => {
+    try {
+        req.session.username = req.body.username;
+        req.session.test = req.body.test;
+        return res.status(200);
+    } catch (error) {
+        return res.status(500).json({ msg: "An error has occurred!" });
     }
 })
 

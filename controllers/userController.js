@@ -8,13 +8,13 @@ router.get("/", async (req, res)=> {
     try {
         const allUsers = await User.findAll();
         if (allUsers){
-            res.status(200).json(allUsers);
+            return res.status(200).json(allUsers);
         } else {
-            res.status(404).json({ msg: "Unable to find Users!" })
+            return res.status(404).json({ msg: "Unable to find Users!" })
         }
     } catch (error){
         console.log(error);
-        res.status(500).json({ msg: "An error has occurred!" });
+        return res.status(500).json({ msg: "An error has occurred!" });
     }
 })
 
@@ -29,10 +29,10 @@ router.post("/login", async (req, res) => {
 
         if (findUser && bcrypt.compareSync(req.body.password, findUser.password)){
             req.session.userID = findUser.id;
-            res.session.username = findUser.username;
-            res.status(200).json(findUser);
+            req.session.username = findUser.username;
+            return res.status(200).json(findUser);
         } else {
-            res.status(401).json({msg: "Incorrect email or password!"});
+            return res.status(401).json({msg: "Incorrect email or password!"});
         }
     } catch (error){
         console.log(error);
@@ -54,13 +54,13 @@ router.post("/create", async (req, res) => {
         if (newUser){
             req.session.userId = newUser.id;
             req.session.username = newUser.username;
-            res.status(200).json(newUser);
+            return res.status(200).json(newUser);
         } else {
-            res.status(404).json( {msg: "Something went wrong! "});
+            return res.status(404).json( {msg: "Something went wrong! "});
         }
     } catch (error){
         console.log(error);
-        res.status(500).json({ msg: "An error has occurred!" });
+        return res.status(500).json({ msg: "An error has occurred!" });
     }
 })
 
