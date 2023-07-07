@@ -14,4 +14,16 @@ router.get("/home", (req, res) => {
     return res.render("home")
 })
 
+router.get("/bench", (req, res) => {
+    return res.render("bench")
+})
+
+router.get("/squat", (req, res) => {
+    return res.render("squat")
+})
+
+router.get("/bench", (req, res) => {
+    return res.render("deadlift")
+})
+
 module.exports = router;
