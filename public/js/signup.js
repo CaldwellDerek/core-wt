@@ -1,5 +1,5 @@
 // Creates new user on click
-document.querySelector(".submit-btn").addEventListener("click", async (e) => {
+document.querySelector(".submit-btn").addEventListener("click", async () => {
     // Displays a window alert if an input is left blank.
     for (let input of document.querySelectorAll("input")){
         if (!input.value){
@@ -29,4 +29,9 @@ document.querySelector(".submit-btn").addEventListener("click", async (e) => {
         window.alert("User not created!");
     }
 
+})
+
+// Returns user to login page on click
+document.querySelector(".return-btn").addEventListener("click", () => {
+    window.location.href = "/";
 })
