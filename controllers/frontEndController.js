@@ -5,6 +5,11 @@ router.get("/", (req, res)=> {
     return res.render("login");
 })
 
+router.get("/signout", (req, res)=> {
+    req.session.destroy();
+    return res.render("login");
+})
+
 router.get("/signup", (req, res) => {
     return res.render("signup");
 })
