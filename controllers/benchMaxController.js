@@ -4,7 +4,14 @@ const { BenchMax } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
-        const allBenchMaxes = await BenchMax.findAll();
+        const allBenchMaxes = await BenchMax.findAll({
+            where: {
+                userID: 1
+            },
+            order: [
+                ["benchMax", "DESC"]
+            ]
+        });
         if (allBenchMaxes){
             return res.status(200).json(allBenchMaxes);
         } else {

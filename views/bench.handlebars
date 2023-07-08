@@ -1,5 +1,5 @@
-<div class="d-flex flex-column align-items-center">
-    <h1>Bench Press Maximums</h1>
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <h1 class="mt-5">Calculate Bench Maximum</h1>
     <div style="width: 60%" class="mb-3">
         <label for="weight" class="form-label">Weight (lbs)</label>
         <input type="number" class="form-control" id="weight" min="1">
@@ -8,7 +8,20 @@
         <label for="reps" class="form-label">Repetitions</label>
         <input type="number" class="form-control" id="reps" min="1">
     </div>
-    <button type="button" class="btn btn-secondary submit-btn mb-4">Calculate</button>
+    <button type="button" class="btn btn-secondary submit-btn mb-5">Calculate</button>
+    <div style="width: 80%" class="container text-center">
+        <h1>Bench Maximums</h1>
+        <table style="margin-bottom: 8rem;" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Max (lbs)</th>
+                    <th scope="col">Date-Time</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 
 
