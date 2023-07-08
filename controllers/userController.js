@@ -52,7 +52,7 @@ router.post("/create", async (req, res) => {
         });
         
         if (newUser){
-            req.session.userId = newUser.id;
+            req.session.userID = newUser.id;
             req.session.username = newUser.username;
             return res.status(200).json(newUser);
         } else {

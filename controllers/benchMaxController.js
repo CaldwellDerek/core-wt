@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
     try {
         const allBenchMaxes = await BenchMax.findAll({
             where: {
-                userID: 1
+                userID: req.session.userID
             },
             order: [
                 ["benchMax", "DESC"]
@@ -27,7 +27,7 @@ router.post("/create", async (req, res) => {
     try {
         const newMax = await BenchMax.create({
             benchMax: req.body.benchMax,
-            userID: 1
+            userID: req.session.userID
         });
         if (newMax){
             return res.status(200).json(newMax);
