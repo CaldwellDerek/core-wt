@@ -1,5 +1,3 @@
-
-
 // Loads table with previous maxes on page load
 window.addEventListener("DOMContentLoaded", async () => {
     document.querySelector(".login-link").style.display = "none";
@@ -23,7 +21,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 })
 
-// Calculates 1 rep maximum for bench press
+// Confirms all input fields are filled, displays modal
 document.querySelector(".submit-btn").addEventListener("click", async () => {
     // Alerts if input is left blank
     for (let input of document.querySelectorAll("input")){
@@ -40,6 +38,7 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
     modal.show();
 })
 
+// Commits new max to API upon user confirmation
 document.querySelector(".modal-confirm").addEventListener("click", async () => {
     const createMax = await fetch("/api/bench/create", {
         method: "POST",
@@ -50,10 +49,6 @@ document.querySelector(".modal-confirm").addEventListener("click", async () => {
             "Content-Type": "application/json"
         }
     });
-
-    // for (let input of document.querySelectorAll("input")){
-    //     input.value = "";
-    // }
 
     location.reload();
 })

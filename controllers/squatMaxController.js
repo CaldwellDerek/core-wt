@@ -1,21 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const { BenchMax } = require("../models");
+const { SquatMax } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
-        const benchMaxes = await BenchMax.findAll({
+        const squatMaxes = await SquatMax.findAll({
             where: {
                 userID: req.session.userID
             },
             order: [
-                ["benchMax", "DESC"]
+                ["squatMax", "DESC"]
             ]
         });
-        if (benchMaxes){
-            return res.status(200).json(benchMaxes);
+        if (squatMaxes){
+            return res.status(200).json(squatMaxes);
         } else {
-            return res.status(404).json({ msg: "Unable to find Bench Maxes!" });
+            return res.status(404).json({ msg: "Unable to find Squat Maxes!" });
         }
     } catch (error){
         console.log(error);
@@ -25,11 +25,11 @@ router.get("/", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     try {
-        const allBenchMaxes = await BenchMax.findAll();
-        if (allBenchMaxes){
-            return res.status(200).json(allBenchMaxes);
+        const allSquatMaxes = await SquatMax.findAll();
+        if (allSquatMaxes){
+            return res.status(200).json(allSquatMaxes);
         } else {
-            return res.status(404).json({ msg: "Unable to find Bench Maxes!" });
+            return res.status(404).json({ msg: "Unable to find Squat Maxes!" });
         }
     } catch (error){
         console.log(error);
@@ -39,14 +39,14 @@ router.get("/all", async (req, res) => {
 
 router.post("/create", async (req, res) => {
     try {
-        const newMax = await BenchMax.create({
-            benchMax: req.body.benchMax,
+        const newMax = await SquatMax.create({
+            squatMax: req.body.squatMax,
             userID: req.session.userID
         });
         if (newMax){
             return res.status(200).json(newMax);
         } else {
-            return res.status(404).json({ msg: "Unable to create new Bench Max!" });
+            return res.status(404).json({ msg: "Unable to create new Squat Max!" });
         }
     } catch (error){
         console.log(error);

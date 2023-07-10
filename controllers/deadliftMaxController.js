@@ -1,21 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const { BenchMax } = require("../models");
+const { DeadliftMax } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
-        const benchMaxes = await BenchMax.findAll({
+        const deadliftMaxes = await DeadliftMax.findAll({
             where: {
                 userID: req.session.userID
             },
             order: [
-                ["benchMax", "DESC"]
+                ["deadliftMax", "DESC"]
             ]
         });
-        if (benchMaxes){
-            return res.status(200).json(benchMaxes);
+        if (deadliftMaxes){
+            return res.status(200).json(deadliftMaxes);
         } else {
-            return res.status(404).json({ msg: "Unable to find Bench Maxes!" });
+            return res.status(404).json({ msg: "Unable to find Deadlift Maxes!" });
         }
     } catch (error){
         console.log(error);
@@ -25,11 +25,11 @@ router.get("/", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     try {
-        const allBenchMaxes = await BenchMax.findAll();
-        if (allBenchMaxes){
-            return res.status(200).json(allBenchMaxes);
+        const allDeadliftMaxes = await DeadliftMax.findAll();
+        if (allDeadliftMaxes){
+            return res.status(200).json(allDeadliftMaxes);
         } else {
-            return res.status(404).json({ msg: "Unable to find Bench Maxes!" });
+            return res.status(404).json({ msg: "Unable to find Deadlift Maxes!" });
         }
     } catch (error){
         console.log(error);
@@ -39,14 +39,14 @@ router.get("/all", async (req, res) => {
 
 router.post("/create", async (req, res) => {
     try {
-        const newMax = await BenchMax.create({
-            benchMax: req.body.benchMax,
+        const newMax = await DeadliftMax.create({
+            deadliftMax: req.body.deadliftMax,
             userID: req.session.userID
         });
         if (newMax){
             return res.status(200).json(newMax);
         } else {
-            return res.status(404).json({ msg: "Unable to create new Bench Max!" });
+            return res.status(404).json({ msg: "Unable to create new Deadlift Max!" });
         }
     } catch (error){
         console.log(error);
