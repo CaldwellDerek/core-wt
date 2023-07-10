@@ -2,12 +2,22 @@
 
 // Loads user's current maximum on page load
 window.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("/api/bench/");
-    const userData = await response.json();
     try {
-        if (userData){
-            document.querySelector(".current-bench").textContent = `${userData[0].benchMax} lbs`;
-        }
+        const [benchResponse, squatResponse, deadliftResponse] = await Promise.all([
+            fetch("/api/bench"),
+            fetch("/api/squat"),
+            fetch("/api/deadlift")
+        ]);
+
+        const benchData = await benchResponse.json();
+        document.querySelector(".current-bench").textContent = `${benchData[0].benchMax} lbs`;
+
+        const squatData = await squatResponse.json();
+        document.querySelector(".current-squat").textContent = `${squatData[0].squatMax} lbs`;
+
+        const deadliftData = await deadliftResponse.json();
+        document.querySelector(".current-deadlift").textContent = `${deadliftData[0].deadliftMax} lbs`;    
+
     } catch (error) {
         console.log(error);
     }

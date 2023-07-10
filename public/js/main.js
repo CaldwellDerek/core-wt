@@ -16,5 +16,5 @@ if (window.location.href == "http://localhost:3000/"){
 }
 
 document.querySelector(".sign-out").addEventListener("click", async () => {
-    window.location.href = "/signout"
+    window.location.href = "/"
 })
