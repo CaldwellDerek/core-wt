@@ -1,3 +1,5 @@
+
+
 // Creates new user on click
 document.querySelector(".submit-btn").addEventListener("click", async () => {
     // Displays a window alert if an input is left blank.

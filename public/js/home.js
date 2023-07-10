@@ -1,4 +1,6 @@
-// Loads user's 
+
+
+// Loads user's current maximum on page load
 window.addEventListener("DOMContentLoaded", async () => {
     const response = await fetch("/api/bench/");
     const userData = await response.json();

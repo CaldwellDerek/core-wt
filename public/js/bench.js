@@ -1,5 +1,9 @@
+
+
 // Loads table with previous maxes on page load
 window.addEventListener("DOMContentLoaded", async () => {
+    document.querySelector(".login-link").style.display = "none";
+    document.querySelector(".signup-link").style.display = "none";
     const response = await fetch("/api/bench/");
     const userData = await response.json();
     try {
