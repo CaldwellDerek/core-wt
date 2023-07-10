@@ -1,3 +1,4 @@
+// Loads table with previous maxes on page load
 window.addEventListener("DOMContentLoaded", async () => {
     const response = await fetch("/api/bench/");
     const userData = await response.json();
