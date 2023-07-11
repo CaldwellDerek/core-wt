@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { SquatMax } = require("../models");
+const { User, SquatMax } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
@@ -14,6 +14,36 @@ router.get("/", async (req, res) => {
         });
         if (squatMaxes){
             return res.status(200).json(squatMaxes);
+        } else {
+            return res.status(404).json({ msg: "Unable to find Squat Maxes!" });
+        }
+    } catch (error){
+        console.log(error);
+        return res.status(500).json({ msg: "An error has occurred!" });
+    }
+});
+
+router.get("/highest", async (req, res) => {
+    try {
+        const squatMaxes = await SquatMax.findAll({
+            order: [
+                ["squatMax", "DESC"]
+            ]
+        });
+        if (squatMaxes){
+            const userData = await User.findOne({
+                where: {
+                    id: squatMaxes[0].dataValues.userID
+                }
+            });
+            if (userData){
+                return res.status(200).json({ 
+                    username: userData.dataValues.username,
+                    weight: squatMaxes[0].dataValues.squatMax
+                });
+            } else {
+                return res.status(404).json({ msg: "Unable to find User Data!" });
+            }
         } else {
             return res.status(404).json({ msg: "Unable to find Squat Maxes!" });
         }

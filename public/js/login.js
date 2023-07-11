@@ -1,4 +1,3 @@
-
 // Validates input, logs user in on click
 document.querySelector(".submit-btn").addEventListener("click", async () => {
     for (let input of document.querySelectorAll("input")){
