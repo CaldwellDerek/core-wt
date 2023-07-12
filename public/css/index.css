@@ -15,3 +15,9 @@
 .footer-img:hover {
     filter: var(--footer-filter-hover);
 }
+
+@media screen and (max-width: 500px) {
+    .carousel-title {
+        font-size: 1rem !important;
+    }
+}
