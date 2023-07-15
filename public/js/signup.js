@@ -26,9 +26,9 @@ document.querySelector(".submit-btn").addEventListener("click", async () => {
 
     // Alerts whether user was created
     if (newUser.ok){
-        window.alert("User successfully created!");
+        window.location.href = "/home";
     } else {
-        window.alert("User not created!");
+        window.alert("Unable to create User");
     }
 
 })

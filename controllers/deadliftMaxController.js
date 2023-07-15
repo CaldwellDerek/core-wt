@@ -30,22 +30,26 @@ router.get("/highest", async (req, res) => {
                 ["deadliftMax", "DESC"]
             ]
         });
-        if (deadliftMaxes){
-            const userData = await User.findOne({
-                where: {
-                    id: deadliftMaxes[0].dataValues.userID
-                }
-            });
-            if (userData){
-                return res.status(200).json({ 
-                    username: userData.dataValues.username,
-                    weight: deadliftMaxes[0].dataValues.deadliftMax
+        try {
+            if (deadliftMaxes){
+                const userData = await User.findOne({
+                    where: {
+                        id: deadliftMaxes[0].dataValues.userID
+                    }
                 });
+                if (userData){
+                    return res.status(200).json({ 
+                        username: userData.dataValues.username,
+                        weight: deadliftMaxes[0].dataValues.deadliftMax
+                    });
+                } else {
+                    return res.status(404).json({ msg: "Unable to find User Data!" });
+                }
             } else {
-                return res.status(404).json({ msg: "Unable to find User Data!" });
+                return res.status(404).json({ msg: "Unable to find Deadlift Maxes!" });
             }
-        } else {
-            return res.status(404).json({ msg: "Unable to find Deadlift Maxes!" });
+        } catch (error) {
+            return res.status(200).json({ msg: "No deadlift data exists." });
         }
     } catch (error){
         console.log(error);

@@ -4,7 +4,11 @@ const { Workout } = require("../models");
 
 router.get("/all", async (req, res) => {
     try {
-        const allWorkouts = await Workout.findAll();
+        const allWorkouts = await Workout.findAll({
+            where: {
+                username: req.session.username
+            }
+        });
         if (allWorkouts){
             return res.status(200).json(allWorkouts);
         } else {
@@ -19,7 +23,8 @@ router.get("/all", async (req, res) => {
 router.post("/create", async (req, res) => {
     try {
         const newWorkout = await Workout.create({
-            name: req.body.name
+            name: req.body.name,
+            username: req.session.username
         });
         
         if (newWorkout){

@@ -9,53 +9,36 @@ window.addEventListener("DOMContentLoaded", async () => {
             fetch("/api/squat/highest"),
             fetch("/api/deadlift/highest")
         ]);
-        const topBenchData = await topBenchResponse.json();
-        try {
-            document.querySelector(".top-bench-user").textContent = topBenchData.username;
-            document.querySelector(".top-bench").textContent = `${topBenchData.weight} lbs`;
-        } catch (error) {
-            // Ignore
-        }
+        
+            const topBenchData = await topBenchResponse.json();
+            if (topBenchData.username && topBenchData.weight){
+                document.querySelector(".top-bench-user").textContent = topBenchData.username;
+                document.querySelector(".top-bench").textContent = `${topBenchData.weight} lbs`;
+            }
 
-        const topSquatData = await topSquatResponse.json();
-        try {
-            document.querySelector(".top-squat-user").textContent = topSquatData.username;
-            document.querySelector(".top-squat").textContent = `${topSquatData.weight} lbs`;
-        } catch (error) {
-            // Ignore
-        }
+            const topSquatData = await topSquatResponse.json();
+            if (topSquatData.username && topSquatData.weight){
+                document.querySelector(".top-squat-user").textContent = topSquatData.username;
+                document.querySelector(".top-squat").textContent = `${topSquatData.weight} lbs`;
+            }
 
-        const topDeadliftData = await topDeadliftResponse.json();
-        try {
-            document.querySelector(".top-deadlift-user").textContent = topDeadliftData.username;
-            document.querySelector(".top-deadlift").textContent = `${topDeadliftData.weight} lbs`;
-        } catch (error) {
-            // Ignore
-        }
+            const topDeadliftData = await topDeadliftResponse.json();
+            if (topDeadliftData.username && topDeadliftData.weight){
+                document.querySelector(".top-deadlift-user").textContent = topDeadliftData.username;
+                document.querySelector(".top-deadlift").textContent = `${topDeadliftData.weight} lbs`;
+            }
 
-        const benchData = await benchResponse.json();
-        try {
+            const benchData = await benchResponse.json();
             document.querySelector(".current-bench").textContent = `${benchData[0].benchMax} lbs`;
-        } catch (error) {
-            // Ignore
-        }
 
-        const squatData = await squatResponse.json();
-        try {
+            const squatData = await squatResponse.json();
             document.querySelector(".current-squat").textContent = `${squatData[0].squatMax} lbs`;
-        } catch (error) {
-            // Ignore
-        }
 
-        const deadliftData = await deadliftResponse.json();
-        try {
+            const deadliftData = await deadliftResponse.json();
             document.querySelector(".current-deadlift").textContent = `${deadliftData[0].deadliftMax} lbs`;
-        } catch (error){
-            // Ignore
-        }
         
     } catch (error) {
-        console.log(error);
+        // Ignore
     }
 })
 

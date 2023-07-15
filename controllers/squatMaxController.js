@@ -31,18 +31,22 @@ router.get("/highest", async (req, res) => {
             ]
         });
         if (squatMaxes){
-            const userData = await User.findOne({
-                where: {
-                    id: squatMaxes[0].dataValues.userID
-                }
-            });
-            if (userData){
-                return res.status(200).json({ 
-                    username: userData.dataValues.username,
-                    weight: squatMaxes[0].dataValues.squatMax
+            try {
+                const userData = await User.findOne({
+                    where: {
+                        id: squatMaxes[0].dataValues.userID
+                    }
                 });
-            } else {
-                return res.status(404).json({ msg: "Unable to find User Data!" });
+                if (userData){
+                    return res.status(200).json({ 
+                        username: userData.dataValues.username,
+                        weight: squatMaxes[0].dataValues.squatMax
+                    });
+                } else {
+                    return res.status(404).json({ msg: "Unable to find User Data!" });
+                }
+            } catch (error){
+                return res.status(200).json({ msg: "No squat data exists." });
             }
         } else {
             return res.status(404).json({ msg: "Unable to find Squat Maxes!" });

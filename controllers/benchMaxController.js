@@ -31,18 +31,22 @@ router.get("/highest", async (req, res) => {
             ]
         });
         if (benchMaxes){
-            const userData = await User.findOne({
-                where: {
-                    id: benchMaxes[0].dataValues.userID
-                }
-            });
-            if (userData){
-                return res.status(200).json({ 
-                    username: userData.dataValues.username,
-                    weight: benchMaxes[0].dataValues.benchMax
+            try {
+                const userData = await User.findOne({
+                    where: {
+                        id: benchMaxes[0].dataValues.userID
+                    }
                 });
-            } else {
-                return res.status(404).json({ msg: "Unable to find User Data!" });
+                if (userData){
+                    return res.status(200).json({ 
+                        username: userData.dataValues.username,
+                        weight: benchMaxes[0].dataValues.benchMax
+                    });
+                } else {
+                    return res.status(404).json({ msg: "Unable to find User Data!" });
+                }
+            } catch (error) {
+                return res.status(200).json({ msg: "No bench data exists." });
             }
         } else {
             return res.status(404).json({ msg: "Unable to find Bench Maxes!" });
