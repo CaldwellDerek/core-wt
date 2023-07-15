@@ -18,6 +18,10 @@ router.get("/home", (req, res) => {
     return res.render("home")
 })
 
+router.get("/workout", (req, res) => {
+    return res.render("workout")
+})
+
 router.get("/bench", (req, res) => {
     return res.render("bench")
 })

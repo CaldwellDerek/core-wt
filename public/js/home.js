@@ -10,32 +10,38 @@ window.addEventListener("DOMContentLoaded", async () => {
             fetch("/api/deadlift/highest")
         ]);
         
-            const topBenchData = await topBenchResponse.json();
-            if (topBenchData.username && topBenchData.weight){
-                document.querySelector(".top-bench-user").textContent = topBenchData.username;
-                document.querySelector(".top-bench").textContent = `${topBenchData.weight} lbs`;
-            }
+        const topBenchData = await topBenchResponse.json();
+        if (topBenchData.username && topBenchData.weight){
+            document.querySelector(".top-bench-user").textContent = topBenchData.username;
+            document.querySelector(".top-bench").textContent = `${topBenchData.weight} lbs`;
+        }
 
-            const topSquatData = await topSquatResponse.json();
-            if (topSquatData.username && topSquatData.weight){
-                document.querySelector(".top-squat-user").textContent = topSquatData.username;
-                document.querySelector(".top-squat").textContent = `${topSquatData.weight} lbs`;
-            }
+        const topSquatData = await topSquatResponse.json();
+        if (topSquatData.username && topSquatData.weight){
+            document.querySelector(".top-squat-user").textContent = topSquatData.username;
+            document.querySelector(".top-squat").textContent = `${topSquatData.weight} lbs`;
+        }
 
-            const topDeadliftData = await topDeadliftResponse.json();
-            if (topDeadliftData.username && topDeadliftData.weight){
-                document.querySelector(".top-deadlift-user").textContent = topDeadliftData.username;
-                document.querySelector(".top-deadlift").textContent = `${topDeadliftData.weight} lbs`;
-            }
+        const topDeadliftData = await topDeadliftResponse.json();
+        if (topDeadliftData.username && topDeadliftData.weight){
+            document.querySelector(".top-deadlift-user").textContent = topDeadliftData.username;
+            document.querySelector(".top-deadlift").textContent = `${topDeadliftData.weight} lbs`;
+        }
 
-            const benchData = await benchResponse.json();
+        const benchData = await benchResponse.json();
+        if (benchData[0].benchMax) {
             document.querySelector(".current-bench").textContent = `${benchData[0].benchMax} lbs`;
+        }
 
-            const squatData = await squatResponse.json();
+        const squatData = await squatResponse.json();
+        if (squatData[0].squatMax) {
             document.querySelector(".current-squat").textContent = `${squatData[0].squatMax} lbs`;
+        }
 
-            const deadliftData = await deadliftResponse.json();
+        const deadliftData = await deadliftResponse.json();
+        if (deadliftData[0].deadliftMax) {
             document.querySelector(".current-deadlift").textContent = `${deadliftData[0].deadliftMax} lbs`;
+        }
         
     } catch (error) {
         // Ignore
@@ -55,4 +61,9 @@ document.querySelector(".squat-btn").addEventListener("click", () => {
 // Navigates to deadlift page
 document.querySelector(".deadlift-btn").addEventListener("click", () => {
     window.location.href = "/deadlift";
+})
+
+// Navigates to workout page
+document.querySelector(".workout-btn").addEventListener("click", () => {
+    window.location.href = "/workout";
 })
