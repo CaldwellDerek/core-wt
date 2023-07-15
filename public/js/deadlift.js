@@ -7,9 +7,9 @@ window.addEventListener("DOMContentLoaded", async () => {
         for (let max of userData){
             const row = document.createElement("tr");
             row.innerHTML = `
-                <th scope="row">${count}</th>
-                <td>${max.deadliftMax}</td>
-                <td>${dayjs(max.createdAt).format("MM/DD/YYYY - hh:mm A")}</td>
+                <th scope="row" style="background-color: black; color: white;">${count}</th>
+                <td style="background-color: black; color: white;">${max.deadliftMax}</td>
+                <td style="background-color: black; color: white;">${dayjs(max.createdAt).format("MM/DD/YYYY - hh:mm A")}</td>
             `
             document.querySelector("tbody").appendChild(row);
             count++;
