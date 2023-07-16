@@ -1,8 +1,8 @@
 <div style="padding: 5rem 0 7.5rem;" class="container text-center w-75">
     <h1 style="font-weight: bold;" class="mt-5">MY WORKOUTS</h1>
-    <div style="padding-top: 2rem; display: grid; grid-template-rows: 1fr; grid-template-columns: repeat(5, 1fr); margin-bottom: 2rem;">
+    <div  style="padding-top: 2rem; display: grid; grid-template-rows: 1fr; grid-template-columns: repeat(5, 1fr); margin-bottom: 2rem;">
         <div style="grid-row: 1; grid-column: 1;" class="container">
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" placeholder="Name of Exercise">
         </div>
         <div style="grid-row: 1; grid-column: 2;" class="container">
             <div id="type" class="dropdown-center">
@@ -49,10 +49,7 @@
         </div>
         <div style="grid-row: 1; grid-column: 4;" class="container">
             <div id="type" class="dropdown-center">
-                <button style="font-size: 1.25rem;" class="btn btn-secondary dropdown-toggle difficulty-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    DIFFICULTY
-                </button>
+                <button style="font-size: 1.25rem;" class="btn btn-secondary dropdown-toggle difficulty-toggle" type="button" data-bs-toggle="dropdown"aria-expanded="false">DIFFICULTY</button>
                 <ul class="dropdown-menu">
                     <li style="cursor: pointer;" class="dropdown-item difficulty">BEGINNER</li>
                     <li style="cursor: pointer;" class="dropdown-item difficulty">INTERMEDIATE</li>
@@ -64,6 +61,7 @@
             <button style="font-size: 1.25rem;" type="button" class="btn btn-secondary mb-5 search-btn">SEARCH</button>
         </div>
     </div>
+    <div style="text-align: left;" class="exercise-container"></div>
 </div>
 <script src="/js/workout.js"></script>
 
