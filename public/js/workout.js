@@ -1,4 +1,10 @@
 document.querySelector(".search-btn").addEventListener("click", async () => {
+    if (document.querySelector(".exercise")){
+        for (let exercise of document.querySelectorAll(".exercise")){
+            exercise.remove();
+        }
+    }
+
     let name = document.querySelector("#name").value;
     let type = "";
     let muscle = "";
@@ -25,9 +31,11 @@ document.querySelector(".search-btn").addEventListener("click", async () => {
     
     for (let exercise of responseData){
         const div = document.createElement("div");
+        div.setAttribute("style", "padding-bottom: 2rem;");
+        div.classList.add("exercise");
 
         const divContent = `
-            <h2 style="font-weight: bold;">${exercise.name}</h2>
+            <h2 style="font-weight: bold; font-size: 1.5rem;">${exercise.name}</h2>
             <ul style="list-style-type: none;">
             <li style="font-size: 1.25rem;"><span style="font-weight: bold;">Type: </span>${exercise.type}</li>
             <li style="font-size: 1.25rem;"><span style="font-weight: bold;">Muscle: </span>${exercise.muscle}</li>
@@ -37,10 +45,10 @@ document.querySelector(".search-btn").addEventListener("click", async () => {
             <p style="font-size: 1.25rem;">
                 ${exercise.instructions}
             </p>
-        `
+        `;
         div.innerHTML = divContent;
 
-        document.querySelector(".exercise-container").appendChild(div);
+        document.querySelector(".results").appendChild(div);
     }
 })
 

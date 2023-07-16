@@ -26,12 +26,17 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                             <a style="display: none; margin-left: 1rem; font-size: 1.25rem;" class="nav-link home-link" aria-current="page" href="/home">HOME</a>
+                            </li>
                             <li class="nav-item">
-                            <a style="display: none; margin-left: 1rem; font-size: 1.25rem;" class="nav-link workout-link" aria-current="page" href="/workout">MY-WORKOUTS</a>
+                            <a style="display: none; margin-left: 1rem; font-size: 1.25rem;" class="nav-link my-workout-link" aria-current="page" href="/my-workout">MY-WORKOUTS</a>
+                            </li>
+                            <li class="nav-item">
+                            <a style="display: none; margin-left: 1rem; font-size: 1.25rem;" class="nav-link workout-link" aria-current="page" href="/workout">EXERCISES</a>
+                            </li>
                             <li class="nav-item">
                             <a style="display: none; margin-left: 1rem; font-size: 1.25rem;" class="nav-link login-link" aria-current="page" href="/">LOG-IN</a>
                             </li> 
-                            </li>
+                            <li>
                             <a style="display: none; margin-left: 1rem; font-size: 1.25rem;" class="nav-link signup-link" aria-current="page" href="/signup">SIGN-UP</a>
                             </li>                                           
                             <li class="nav-item">
@@ -42,7 +47,7 @@
                 </div>
             </nav>
         </div>
-        <main style="min-height: 80vh;">
+        <main style="min-height: 80vh; position: relative;">
             {{{body}}}
         </main>
         <div style="min-height: 5rem; z-index: 100;" class="row position-fixed bottom-0 end-0 start-0">
