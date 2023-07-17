@@ -18,11 +18,17 @@ window.addEventListener("DOMContentLoaded", async () => {
         </h2>
         <div id="collapse${count}" class="${show}"  data-bs-parent="#accordion">
             <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
-                plugin adds the appropriate classes that we use to style each element. These classes control the
-                overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of
-                this with custom CSS or overriding our default variables. It's also worth noting that just about any
-                HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <table class="table table-hover">
+                    <thead >
+                        <tr>
+                            <th scope="col" style="">Name</th>
+                            <th scope="col" style="">Sets</th>
+                            <th scope="col" style="">Repetitions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <button data-id="${workout.id}" data-name="${workout.name}" style="font-size: 1.25rem;" type="button" class="btn btn-secondary delete-btn mb-5">DELETE WORKOUT</button>
             </div>
         </div>
         `;
@@ -35,11 +41,28 @@ window.addEventListener("DOMContentLoaded", async () => {
         show = "accordion-collapse collapse";
         collapse = "accordion-button collapsed";
     }
+
+    for (let btn of document.querySelectorAll(".delete-btn")){
+        btn.addEventListener("click", (event) => {
+            const modal = new bootstrap.Modal(document.querySelector(".delete-workout-modal"));
+            document.querySelector(".delete-name").textContent = event.target.getAttribute("data-name");
+            document.querySelector(".confirm-delete-btn").setAttribute("data-id", event.target.getAttribute("data-id"));
+            modal.show();
+        });
+    }
+    
 })
 
 document.querySelector(".show-modal-btn").addEventListener("click", () => {
-    const modal = new bootstrap.Modal(document.querySelector(".modal"));
+    const modal = new bootstrap.Modal(document.querySelector(".create-workout-modal"));
     modal.show();
+})
+
+document.querySelector(".confirm-delete-btn").addEventListener("click", async () => {
+    const response = await fetch(`/api/workouts/delete/${document.querySelector(".confirm-delete-btn").getAttribute("data-id")}`, {
+        method: "DELETE"
+    });
+    location.reload();
 })
 
 document.querySelector(".create-btn").addEventListener("click", async () => {

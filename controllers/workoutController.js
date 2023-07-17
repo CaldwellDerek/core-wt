@@ -41,8 +41,9 @@ router.post("/create", async (req, res) => {
     }
 })
 
-router.delete("/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
     try {
+        console.log("OKAY")
         const deleteWorkout = await Workout.destroy({
             where: {
                 id: req.params.id
