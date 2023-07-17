@@ -1,0 +1,32 @@
+{{!-- MODAL --}}
+<div class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">CREATE WORKOUT</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label">NAME OF THE WORKOUT</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <p style="1.25rem">After entering the name for you new workout, select "CONTINUE" and your new workout will appear on the "MY WORKOUTS" page. From there you can enter in custom exercises, or you can use the Exercises page to add exercises to your new workout.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-primary create-btn">CONTINUE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- CONTENT --}}
+<div class="container text-center">
+    <h1 style="font-weight: bold; padding-top: 2rem;">MY WORKOUTS</h1>
+    <button type="button" style="font-size: 1.25rem; margin-top: 2rem;" class="btn btn-secondary show-modal-btn">CREATE
+    WORKOUT</button>
+    <div style="padding: 2rem 0 7rem;" class="accordion" id="accordion">
+    </div>
+</div>
+<script src="/js/workouts.js"></script>

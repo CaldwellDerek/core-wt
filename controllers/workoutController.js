@@ -7,7 +7,10 @@ router.get("/all", async (req, res) => {
         const allWorkouts = await Workout.findAll({
             where: {
                 username: req.session.username
-            }
+            },
+            order: [
+                ["createdAt", "DESC"]
+            ]
         });
         if (allWorkouts){
             return res.status(200).json(allWorkouts);
