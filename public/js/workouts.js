@@ -28,7 +28,9 @@ window.addEventListener("DOMContentLoaded", async () => {
                     </thead>
                     <tbody></tbody>
                 </table>
-                <button data-id="${workout.id}" data-name="${workout.name}" style="font-size: 1.25rem;" type="button" class="btn btn-secondary delete-btn mb-5">DELETE WORKOUT</button>
+                <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 6rem;">
+                    <button data-id="${workout.id}" data-name="${workout.name}" style="font-size: 1.25rem;" type="button" class="btn btn-secondary delete-btn">DELETE WORKOUT</button>
+                </div>
             </div>
         </div>
         `;

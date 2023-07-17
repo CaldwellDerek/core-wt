@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Workout } = require("../models");
+const { Workout, Exercise } = require("../models");
 
 router.get("/all", async (req, res) => {
     try {
@@ -16,6 +16,24 @@ router.get("/all", async (req, res) => {
             return res.status(200).json(allWorkouts);
         } else {
             return res.status(404).json({ msg: "Unable to find Workouts!" })
+        }
+    } catch (error){
+        console.log(error);
+        return res.status(500).json({ msg: "An error has occurred!" });
+    }
+})
+
+router.get("/all/exercises", async (req, res) => {
+    try {
+        const allWorkouts = await Workout.findAll({
+            include: [{
+                model: Exercise
+            }]
+        })
+        if (allWorkouts){
+            return res.status(200).json(allWorkouts);
+        } else {
+            return res.status(404).json({ msg: "No information found!" });
         }
     } catch (error){
         console.log(error);
