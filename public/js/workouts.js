@@ -20,9 +20,10 @@ window.addEventListener("DOMContentLoaded", async () => {
                 <table class="table table-hover">
                     <thead >
                         <tr>
-                            <th scope="col" style="">Name</th>
-                            <th scope="col" style="">Sets</th>
-                            <th scope="col" style="">Repetitions</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Sets</th>
+                            <th scope="col">Repetitions</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody id="${workout.id}"></tbody>
@@ -43,9 +44,22 @@ window.addEventListener("DOMContentLoaded", async () => {
             <td>${exercise.name}</td>
             <td>${exercise.sets}</td>
             <td>${exercise.reps}</td>
+            <td style="width: 8rem;">
+                <button data-id="${exercise.id}" style="font-size: 0.75rem;" type="button" class="btn btn-secondary delete-exercise-btn">
+                    DELETE
+                </button>
+            </td>
             `
+
             tr.innerHTML = row;
             document.getElementById(workout.id).appendChild(tr);
+
+            document.querySelector(".delete-exercise-btn").addEventListener("click", async () => {
+                const response = await fetch(`/api/exercise/${document.querySelector(".delete-exercise-btn").getAttribute("data-id")}`, {
+                    method: "DELETE"
+                });
+                location.reload();
+            })
         }
         count++;
         show = "accordion-collapse collapse";
@@ -89,3 +103,4 @@ document.querySelector(".create-btn").addEventListener("click", async () => {
 
     location.reload();
 })
+
