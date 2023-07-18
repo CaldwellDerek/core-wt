@@ -26,6 +26,12 @@ router.get("/all", async (req, res) => {
 router.get("/all/exercises", async (req, res) => {
     try {
         const allWorkouts = await Workout.findAll({
+            where: {
+                username: req.session.username
+            },
+            order: [
+                ["createdAt", "DESC"]
+            ],
             include: [{
                 model: Exercise
             }]

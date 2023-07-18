@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("/api/workouts/all");
+    const response = await fetch("/api/workouts/all/exercises");
     const responseData = await response.json();
 
     let count = 1;
@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     for (let workout of responseData){
         const div = document.createElement("div");
         div.classList.add("accordion-item");
-        
         const divContent = 
         `
         <h2 class="accordion-header">
@@ -26,7 +25,7 @@ window.addEventListener("DOMContentLoaded", async () => {
                             <th scope="col" style="">Repetitions</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody id="${workout.id}"></tbody>
                 </table>
                 <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 6rem;">
                     <button data-id="${workout.id}" data-name="${workout.name}" style="font-size: 1.25rem;" type="button" class="btn btn-secondary delete-btn">DELETE WORKOUT</button>
@@ -34,11 +33,20 @@ window.addEventListener("DOMContentLoaded", async () => {
             </div>
         </div>
         `;
-    
         div.innerHTML = divContent;
-    
         document.querySelector("#accordion").appendChild(div);
 
+        for (let exercise of workout.Exercises){
+            const tr = document.createElement("tr");
+            const row = 
+            `
+            <td>${exercise.name}</td>
+            <td>${exercise.sets}</td>
+            <td>${exercise.reps}</td>
+            `
+            tr.innerHTML = row;
+            document.getElementById(workout.id).appendChild(tr);
+        }
         count++;
         show = "accordion-collapse collapse";
         collapse = "accordion-button collapsed";

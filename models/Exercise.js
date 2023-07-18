@@ -15,10 +15,6 @@ Exercise.init({
     reps: {
         type: DataTypes.INTEGER,
         allowNull: false
-    },
-    workoutID: {
-        type: DataTypes.INTEGER,
-        allowNull: false
     }
 },{
     sequelize

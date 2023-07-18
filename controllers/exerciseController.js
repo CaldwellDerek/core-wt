@@ -55,5 +55,24 @@ router.delete("/:id", async (req, res) => {
     }
 })
 
+router.delete("/many/:id", async (req, res) => {
+    try {
+        const deleteExercise = await Exercise.destroy({
+            where: {
+                workoutID: req.params.id
+            }
+        });
+        
+        if (deleteExercise){
+            return res.status(200).json( {msg: "Exercises deleted. "});
+        } else {
+            return res.status(404).json( {msg: "Something went wrong! "});
+        }
+    } catch (error){
+        console.log(error);
+        return res.status(500).json({ msg: "An error has occurred!" });
+    }
+})
+
 
 module.exports = router;

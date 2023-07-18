@@ -14,8 +14,14 @@ SquatMax.belongsTo(User, { foreignKey: 'userID'} );
 User.hasMany(DeadliftMax, { foreignKey: 'userID'} );
 DeadliftMax.belongsTo(User, { foreignKey: 'userID'} );
 
-Workout.hasMany(Exercise, { foreignKey: 'workoutID'} );
-Exercise.belongsTo(Workout, { foreignKey: 'workoutID'} );
+Workout.hasMany(Exercise, {
+    onDelete: 'CASCADE',
+    foreignKey: "workoutID"
+} );
+Exercise.belongsTo(Workout, {
+    onDelete: 'CASCADE',
+    foreignKey: "workoutID"
+});
 
 module.exports = {
     User,
