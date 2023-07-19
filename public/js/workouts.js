@@ -85,7 +85,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             <td>${exercise.sets}</td>
             <td>${exercise.reps}</td>
             <td style="width: 8rem;">
-                <button data-id="${exercise.id}" style="font-size: 0.75rem;" type="button" class="btn btn-secondary delete-exercise-btn">
+                <button data-id="${exercise.id}" style="font-size: 0.75rem;" type="button" class="btn btn-secondary delete-exercise-btn-${exercise.id}">
                     DELETE
                 </button>
             </td>
@@ -94,8 +94,8 @@ window.addEventListener("DOMContentLoaded", async () => {
             tr.innerHTML = row;
             document.getElementById(workout.id).appendChild(tr);
 
-            document.querySelector(".delete-exercise-btn").addEventListener("click", async () => {
-                const response = await fetch(`/api/exercise/${document.querySelector(".delete-exercise-btn").getAttribute("data-id")}`, {
+            document.querySelector(`.delete-exercise-btn-${exercise.id}`).addEventListener("click", async () => {
+                const response = await fetch(`/api/exercise/${document.querySelector(`.delete-exercise-btn-${exercise.id}`).getAttribute("data-id")}`, {
                     method: "DELETE"
                 });
                 location.reload();
