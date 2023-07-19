@@ -45,10 +45,16 @@ document.querySelector(".search-btn").addEventListener("click", async () => {
             <p style="font-size: 1.25rem;">
                 ${exercise.instructions}
             </p>
+            <button data-name="${exercise.name}" style="font-size: 1rem;" type="button" class="btn btn-secondary show-modal-${exercise.name.split(" ").join("")}">ADD TO WORKOUT</button>
         `;
         div.innerHTML = divContent;
-
         document.querySelector(".results").appendChild(div);
+
+        document.querySelector(`.show-modal-${exercise.name.split(" ").join("")}`).addEventListener("click", () => {
+            const modal = new bootstrap.Modal(document.querySelector(".modal"), {});
+            document.querySelector(".modal-header").textContent = exercise.name;
+            modal.show();
+        })
     }
 })
 
