@@ -28,6 +28,22 @@ window.addEventListener("DOMContentLoaded", async () => {
                     </thead>
                     <tbody id="${workout.id}"></tbody>
                 </table>
+                <p style="display: none; color: red;" class="exercise-warning-${workout.id}">Please fill out all fields for Exercise Name, Sets and Reps before selecting the "ADD" button.</p>
+                <form class="mb-2" style="display: flex; justify-content: center; align-items: center; column-gap: 2rem;">
+                    <div>
+                        <label for="exercise-name" class="form-label"></label>
+                        <input placeholder="Exercise Name" type="text" class="form-control" id="exercise-name-${workout.id}">
+                    </div>
+                    <div>
+                        <label for="exercise-sets" class="form-label"></label>
+                        <input placeholder="Sets" type="number" class="form-control" id="exercise-sets-${workout.id}">
+                    </div>
+                    <div>
+                        <label class="form-label" for="exercise-reps"></label>
+                        <input placeholder="Reps" type="number" class="form-control" id="exercise-reps-${workout.id}">
+                    </div>
+                </form>
+                <button data-id="${workout.id}" id="add-exercise-${workout.id}" type="button" class="btn btn-secondary add-exercise-button">ADD</button>
                 <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 6rem;">
                     <button data-id="${workout.id}" data-name="${workout.name}" style="font-size: 1.25rem;" type="button" class="btn btn-secondary delete-btn">DELETE WORKOUT</button>
                 </div>
@@ -36,6 +52,30 @@ window.addEventListener("DOMContentLoaded", async () => {
         `;
         div.innerHTML = divContent;
         document.querySelector("#accordion").appendChild(div);
+
+        document.querySelector(`#add-exercise-${workout.id}`).addEventListener("click", async () => {
+            if (document.querySelector(`#exercise-name-${workout.id}`).value != "" && document.querySelector(`#exercise-sets-${workout.id}`).value != "" && document.querySelector(`#exercise-reps-${workout.id}`).value != "" ){
+                const response = await fetch("/api/exercise/create", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body : JSON.stringify({
+                        "name": document.querySelector(`#exercise-name-${workout.id}`).value,
+                        "sets": document.querySelector(`#exercise-sets-${workout.id}`).value,
+                        "reps": document.querySelector(`#exercise-reps-${workout.id}`).value,
+                        "workoutID": document.querySelector(`#add-exercise-${workout.id}`).getAttribute("data-id")
+                    })
+                });
+                const responseData = await response.json();
+    
+                if (responseData){
+                    location.reload();
+                }
+            } else {
+                document.querySelector(`.exercise-warning-${workout.id}`).style.display = "block";
+            }
+        })
 
         for (let exercise of workout.Exercises){
             const tr = document.createElement("tr");
@@ -76,6 +116,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
     
 })
+
 
 document.querySelector(".show-modal-btn").addEventListener("click", () => {
     const modal = new bootstrap.Modal(document.querySelector(".create-workout-modal"));
