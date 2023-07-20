@@ -1,27 +1,43 @@
 {{!-- WORKOUT Modal --}}
 <div class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-p">Which workout would you like to add this exercise to?</p>
+                <form class="radio-form radio" style="margin: 2rem 0;">
+                    <div style="display: flex; justify-content: center; align-items: center; column-gap: 1rem;">
+                        <div>
+                            <label for="sets" class="form-label"></label>
+                            <input type="number" class="form-control" id="sets" placeholder="Sets">
+                        </div>
+                        <div>
+                            <label for="reps" class="form-label"></label>
+                            <input type="number" class="form-control" id="reps" placeholder="Reps">
+                        </div>
+                    </div>
+                    <p class="message" style="padding-top: 2rem;"></p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-exercise-btn"
+                    data-bs-dismiss="modal">CLOSE</button>
+                <button type="button" class="btn btn-primary save-exercise-btn">SAVE</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {{!-- CONTENT --}}
 <div class="workout-grid" style="display: grid; grid-template-columns: 40% 60%;">
-    <div class="container text-center" style="position: relative; background-color: black; color: white; grid-column: 1;">
+    <div class="container text-center"
+        style="position: relative; background-color: black; color: white; grid-column: 1;">
         <div style="position: sticky; top: 0; bottom: 0; margin-left: 0.5rem;">
             <h2 style="font-weight: bold; padding-top: 2rem;">FILTERS</h2>
-            <div  style=" padding-top: 2rem; display: flex; flex-direction: column; justify-content: center; align-items-center; row-gap: 1.5rem; margin-bottom: 2rem; text-align: left;">
+            <div
+                style=" padding-top: 2rem; display: flex; flex-direction: column; justify-content: center; align-items-center; row-gap: 1.5rem; margin-bottom: 2rem; text-align: left;">
                 <div style="" class="">
                     <label for="name">NAME OF EXERCISE</label>
                     <input type="text" class="form-control" id="name">
@@ -29,8 +45,9 @@
                 <div style="" class="">
                     MUSCLE GROUP
                     <div id="muscle" class="dropdown-center">
-                        <button style="font-size: 1rem; width: 100%;" class="btn btn-secondary dropdown-toggle muscle-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <button style="font-size: 1rem; width: 100%;"
+                            class="btn btn-secondary dropdown-toggle muscle-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             MUSCLE
                         </button>
                         <ul class="dropdown-menu">
@@ -56,8 +73,9 @@
                 <div style="" class="">
                     TYPE OF EXERCISE
                     <div id="type" class="dropdown-center">
-                        <button style="font-size: 1rem; width: 100%;" class="btn btn-secondary dropdown-toggle type-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <button style="font-size: 1rem; width: 100%;"
+                            class="btn btn-secondary dropdown-toggle type-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             EXERCISE TYPE
                         </button>
                         <ul class="dropdown-menu">
@@ -74,7 +92,9 @@
                 <div style="" class="">
                     DIFFICULTY LEVEL
                     <div id="difficulty" class="dropdown-center">
-                        <button style="font-size: 1rem; width: 100%;" class="btn btn-secondary dropdown-toggle difficulty-toggle" type="button" data-bs-toggle="dropdown"aria-expanded="false">DIFFICULTY</button>
+                        <button style="font-size: 1rem; width: 100%;"
+                            class="btn btn-secondary dropdown-toggle difficulty-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">DIFFICULTY</button>
                         <ul class="dropdown-menu">
                             <li style="cursor: pointer;" class="dropdown-item difficulty">BEGINNER</li>
                             <li style="cursor: pointer;" class="dropdown-item difficulty">INTERMEDIATE</li>
@@ -90,7 +110,8 @@
     </div>
     <div class="container text-center" style="min-height: 100vh; grid-column: 2;">
         <h2 style="padding-top: 2rem; font-weight: bold;">EXERCISES</h2>
-        <p style="font-size: 1.25rem; padding-bottom: 2rem; border-bottom: 0.2rem solid black;">Use the search filters to query exercises for your workouts, results will appear below.</p>
+        <p style="font-size: 1.25rem; padding-bottom: 2rem; border-bottom: 0.2rem solid black;">Use the search filters
+            to query exercises for your workouts, results will appear below.</p>
         <div class="results" style="text-align: left; padding-bottom: 5rem;"></div>
     </div>
 </div>
