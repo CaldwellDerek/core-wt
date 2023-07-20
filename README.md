@@ -29,6 +29,7 @@ This fullstack application allows you to create an account and keep track of you
 - bcrypt.js
 - MySql2
 - Sequelize
+- API Ninjas' Exercise API
 
 ## Installation
 You can access the deployed site [here].(www.google.com). 
