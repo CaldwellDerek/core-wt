@@ -32,7 +32,7 @@ This fullstack application allows you to create an account and keep track of you
 - API Ninjas' Exercise API
 
 ## Installation
-You can access the deployed site [HERE].(https://core-wt-3bc894879624.herokuapp.com/). 
+You can access the deployed site [HERE](https://core-wt-3bc894879624.herokuapp.com/). 
 
 1. Navigate to the folder where you would like to clone the repository.
 2. Clone the repository into your folder.
