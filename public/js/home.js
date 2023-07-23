@@ -65,5 +65,5 @@ document.querySelector(".deadlift-btn").addEventListener("click", () => {
 
 // Navigates to workout page
 document.querySelector(".workout-btn").addEventListener("click", () => {
-    window.location.href = "/workout";
+    window.location.href = "/my-workout";
 })
