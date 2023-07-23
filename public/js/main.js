@@ -1,7 +1,7 @@
-if (window.location.href == "http://localhost:3000/"){
+if (window.location.href == "https://core-wt-3bc894879624.herokuapp.com/"){
     document.querySelector(".signup-link").style.display = "block";
 
-} else if (window.location.href == "http://localhost:3000/signup"){
+} else if (window.location.href == "https://core-wt-3bc894879624.herokuapp.com/signup"){
     document.querySelector(".login-link").style.display = "block";
 
 } else {
