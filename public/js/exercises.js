@@ -75,7 +75,7 @@ document.querySelector(".search-btn").addEventListener("click", async () => {
     let count = 1;
     for (let exercise of responseData){
         const div = document.createElement("div");
-        div.setAttribute("style", "padding-bottom: 2rem;");
+        div.setAttribute("style", "padding: 0 0.75rem 2rem 0.75rem;");
         div.classList.add("exercise");
 
         const divContent = `

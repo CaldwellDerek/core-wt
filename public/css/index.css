@@ -20,7 +20,29 @@
     filter: var(--footer-filter-hover);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 50rem){
+    .workout-grid {
+        grid-template-columns: 100% !important;
+        grid-template-rows: 40rem 1fr;
+    }
+
+    .filters {
+        grid-column: 1 / span 1;
+        grid-row: 1/ span 1;
+    }
+    
+    .filters-container {
+        position: relative !important;
+        margin: 0 0.5rem !important;
+    }
+
+    .results-container {
+        grid-column: 1 /span 1 !important;
+        grid-row: 2 / span 1;
+    }
+}
+
+@media screen and (max-width: 31.25rem) {
     .carousel-title {
         font-size: 1rem !important;
     }
